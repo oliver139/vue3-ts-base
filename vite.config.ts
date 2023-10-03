@@ -26,6 +26,10 @@ export default defineConfig(({ mode }) => ({
     Components({
       dts: true,
       version: 3,
+      dirs: [
+        "src/components",
+        "src/views",
+      ],
       resolvers: [
         VueUseComponentsResolver(),
         VueUseDirectiveResolver()

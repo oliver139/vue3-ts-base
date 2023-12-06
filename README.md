@@ -1,6 +1,11 @@
 # vue-ts-base
 
-A Vue 3 base for cloning to start a new website development. Vite + Vue 3 composition API is used.
+[![en](https://img.shields.io/badge/lang-en-e83f6f.svg)](https://github.com/oliver139/vue3-ts-base/blob/main/README.md)
+[![zh-hant](https://img.shields.io/badge/lang-繁體中文-2274a5.svg)](https://github.com/oliver139/vue3-ts-base/blob/main/README.zh-hant.md)
+[![zh-hans](https://img.shields.io/badge/lang-簡体中文-32936f.svg)](https://github.com/oliver139/vue3-ts-base/blob/main/README.zh-hans.md)
+<!-- [![ja](https://img.shields.io/badge/lang-日本語-ffbf00.svg)](https://github.com/oliver139/vue3-ts-base/blob/main/README.ja.md) -->
+
+A Vue 3 base with common useful libraries setup for cloning to start a new website development. Vite + Vue 3 composition API + TypeScript are used.
 
 ## Table of Contents
 * [Setup](#setup)
@@ -36,10 +41,10 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
 ### Vue
 * [Vue router](https://router.vuejs.org/)
 * [Pinia](https://pinia.vuejs.org/) (Global State Management)
-* [Iconify](https://iconify.design/) (Icon Library)
+* [Iconify](https://icon-sets.iconify.design/) (Open Source Icon Library, Available for Commerical Use)
 * [VueUse](https://vueuse.org/) (Useful utility library)
 * [vue-i18n](https://vue-i18n.intlify.dev/) (Multi-languages support)
-* [vue-gtag](https://matteo-gabriele.gitbook.io/vue-gtag/) [Optional] (Connect Google Analytics)
+* [vue-gtag](https://matteo-gabriele.gitbook.io/vue-gtag/) [Optional `--no-optional`] (Connect Google Analytics)
 
 ### Unplugin
 * [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import), allow to use below keywords without importing:
@@ -59,10 +64,10 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
 
 ### CSS
 * [normalize.css](https://necolas.github.io/normalize.css/) (CSS Reset)
-* [SASS](https://sass-lang.com/)
+* [SCSS](https://sass-lang.com/)
 
 ### JavaScript / TypeScript
-* [ESLint](https://eslint.org/) with kind of strict rules, check out `.eslintrc/cjs`
+* [ESLint](https://eslint.org/) with kind of strict rules, check out [`.eslintrc.cjs`](https://github.com/oliver139/vue3-ts-base/blob/main/.eslintrc.cjs)
 * [eslint-plugin-vuejs-accessibility](https://github.com/vue-a11y/eslint-plugin-vuejs-accessibility) (Provide hints on a11y things on the HTML code)
 
 ### Git
@@ -95,8 +100,8 @@ function _changeLang(targetLocale:string) {
 }
 ```
 This function helps change:
-- The `locale` value in vue-i18n
-- `site_lang` value in LocalStorage
+- The `locale` value in `vue-i18n`
+- `site_lang` value in `LocalStorage`
 - `lang` attribute of `<html>` tag
 
 ### Add More Language

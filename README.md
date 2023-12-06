@@ -104,7 +104,7 @@ With the help of vite's `import.meta.glob`, you just need to create new `<locale
 
 ## Project Setup
 
-PNPM with node 18.17.1 is used.
+PNPM with node 20.10.0 is used.
 
 ```sh
 pnpm install

@@ -300,6 +300,7 @@ declare global {
 // for vue template auto import
 import { UnwrapRef } from 'vue'
 declare module 'vue' {
+  interface GlobalComponents {}
   interface ComponentCustomProperties {
     readonly $d: UnwrapRef<typeof import('@/i18n')['$d']>
     readonly $locale: UnwrapRef<typeof import('@/i18n')['$locale']>
@@ -588,6 +589,7 @@ declare module 'vue' {
   }
 }
 declare module '@vue/runtime-core' {
+  interface GlobalComponents {}
   interface ComponentCustomProperties {
     readonly $d: UnwrapRef<typeof import('@/i18n')['$d']>
     readonly $locale: UnwrapRef<typeof import('@/i18n')['$locale']>

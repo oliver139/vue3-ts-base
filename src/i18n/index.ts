@@ -23,12 +23,12 @@ const i18n = createI18n({
 
 _changeLang(site_lang);
 
-export const $t:typeof i18n.global.t = i18n.global.t;
-export const $d:typeof i18n.global.d = i18n.global.d;
-export const $n:typeof i18n.global.n = i18n.global.n;
-export const $locale:typeof i18n.global.locale = i18n.global.locale;
+export const $t: typeof i18n.global.t = i18n.global.t;
+export const $d: typeof i18n.global.d = i18n.global.d;
+export const $n: typeof i18n.global.n = i18n.global.n;
+export const $locale: typeof i18n.global.locale = i18n.global.locale;
 
-export function _changeLang(targetLocale:string) {
+export function _changeLang(targetLocale: string) {
   i18n.global.locale.value = targetLocale;
   localStorage.site_lang = targetLocale;
   document.documentElement.setAttribute("lang", targetLocale);

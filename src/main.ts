@@ -32,7 +32,7 @@ if (gtag.length) {
   const gtagPlugin = Object.values(gtag)[0] as Plugin;
   app.use(gtagPlugin, {
     config: {
-      id: "###"  // Change to yout Google Analytics ID
+      id: "###", // Change to yout Google Analytics ID
     },
   }, router);
 } else {

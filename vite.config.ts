@@ -32,7 +32,7 @@ export default defineConfig(({ mode }) => ({
       ],
       resolvers: [
         VueUseComponentsResolver(),
-        VueUseDirectiveResolver()
+        VueUseDirectiveResolver(),
       ],
       types: [
         {
@@ -44,12 +44,12 @@ export default defineConfig(({ mode }) => ({
           names: ["Icon"],
         },
       ],
-    })
+    }),
   ],
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url))
-    }
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
   },
   esbuild: {
     drop: mode === "production" ? ["debugger"] : [],

@@ -10,6 +10,13 @@ import { VueUseComponentsResolver, VueUseDirectiveResolver } from "unplugin-vue-
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: "modern",
+      },
+    },
+  },
   plugins: [
     vue(),
     AutoImport({

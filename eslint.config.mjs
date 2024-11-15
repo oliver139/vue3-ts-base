@@ -1,19 +1,9 @@
 import pluginJs from "@eslint/js";
 import stylistic from "@stylistic/eslint-plugin";
+import vueTsEslintConfig from "@vue/eslint-config-typescript";
 import pluginVue from "eslint-plugin-vue";
 import globals from "globals";
 import tseslint from "typescript-eslint";
-
-import { FlatCompat } from "@eslint/eslintrc";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: pluginJs.configs.recommended,
-});
 
 export default [
   { files: ["**/*.{js,mjs,cjs,ts,mts,cts,vue}"] },
@@ -21,7 +11,7 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   ...pluginVue.configs["flat/strongly-recommended"],
-  ...compat.extends("@vue/eslint-config-typescript/recommended"),
+  ...vueTsEslintConfig(),
   {
     "name": "vue/overrides",
     "rules": {
@@ -41,7 +31,7 @@ export default [
       "dot-notation": "error",
       "max-nested-callbacks": ["warn", { "max": 4 }],
       "no-console": "off",
-      "no-undefined": "off",
+      "no-undef": ["error", { "typeof": true }],
       "no-empty-function": "off",
       "@typescript-eslint/no-empty-function": "error",
       "no-inline-comments": "off",

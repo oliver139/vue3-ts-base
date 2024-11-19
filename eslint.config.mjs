@@ -8,15 +8,18 @@ import pluginVueA11y from "eslint-plugin-vuejs-accessibility";
 import pluginCasePolice from "eslint-plugin-case-police";
 
 export default [
-  { files: ["**/*.{js,mjs,cjs,ts,mts,cts,vue}"] },
-  { languageOptions: { globals: globals.browser } },
-  pluginJs.configs.recommended,
+  { name: "eslint/custom/files", files: ["**/*.{js,mjs,cjs,ts,mts,cts,vue}"], },
+  { name: "eslint/custom/languages", languageOptions: { globals: globals.browser } },
+  {
+    name: "@eslint/js",
+    ...pluginJs.configs.recommended,
+  },
   ...tseslint.configs.recommended,
   ...pluginVue.configs["flat/strongly-recommended"],
   ...vueTsEslintConfig(),
   {
-    "name": "vue/overrides",
-    "rules": {
+    name: "vue/overrides",
+    rules: {
       "vue/multi-word-component-names": "off",
       "vue/no-console": "error",
       "vue/max-attributes-per-line": ["warn", {
@@ -36,10 +39,13 @@ export default [
       "vuejs-accessibility/tabindex-no-positive ": "warn",
     },
   },
-  pluginCasePolice.configs.recommended,
   {
-    "name": "custom",
-    "rules": {
+    name: "case-police/base",
+    ...pluginCasePolice.configs.recommended,
+  },
+  {
+    name: "custom",
+    rules: {
       "curly": ["error", "multi-line", "consistent"],
       "dot-notation": "error",
       "max-nested-callbacks": ["warn", { "max": 4 }],
@@ -57,15 +63,18 @@ export default [
       "yoda": ["error", "never", { "exceptRange": true }],
     },
   },
-  stylistic.configs.customize({
-    braceStyle: "1tbs",
-    quoteProps: "consistent",
-    quotes: "double",
-    semi: true,
-  }),
   {
-    "name": "@stylistic/overrides",
-    "rules": {
+    name: "@stylistic/base",
+    ...stylistic.configs.customize({
+      braceStyle: "1tbs",
+      quoteProps: "consistent",
+      quotes: "double",
+      semi: true,
+    }),
+  },
+  {
+    name: "@stylistic/overrides",
+    rules: {
       "@stylistic/member-delimiter-style": ["error", {
         "multiline": {
           "delimiter": "comma",

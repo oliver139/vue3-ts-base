@@ -4,6 +4,8 @@ import vueTsEslintConfig from "@vue/eslint-config-typescript";
 import pluginVue from "eslint-plugin-vue";
 import globals from "globals";
 import tseslint from "typescript-eslint";
+import pluginVueA11y from "eslint-plugin-vuejs-accessibility";
+import pluginCasePolice from "eslint-plugin-case-police";
 
 export default [
   { files: ["**/*.{js,mjs,cjs,ts,mts,cts,vue}"] },
@@ -22,6 +24,16 @@ export default [
         "multiline": 1,
       }],
       "vue/singleline-html-element-content-newline": "off",
+    },
+  },
+  ...pluginVueA11y.configs["flat/recommended"],
+  {
+    name: "vuejs-accessibility:overrides",
+    rules: {
+      "vuejs-accessibility/media-has-caption": "warn",
+      "vuejs-accessibility/no-aria-hidden-on-focusable": "error",
+      "vuejs-accessibility/no-autofocus": "warn",
+      "vuejs-accessibility/tabindex-no-positive ": "warn",
     },
   },
   {

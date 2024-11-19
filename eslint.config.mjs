@@ -36,6 +36,7 @@ export default [
       "vuejs-accessibility/tabindex-no-positive ": "warn",
     },
   },
+  pluginCasePolice.configs.recommended,
   {
     "name": "custom",
     "rules": {

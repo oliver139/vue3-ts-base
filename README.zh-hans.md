@@ -5,7 +5,6 @@
 [![zh-hans](https://img.shields.io/badge/lang-简体中文-32936f.svg)](https://github.com/oliver139/vue3-ts-base/blob/main/README.zh-hans.md)
 [![ja](https://img.shields.io/badge/lang-日本语-ffbf00.svg)](https://github.com/oliver139/vue3-ts-base/blob/main/README.ja.md)
 
-
 一个已预先设置了多个常用功能的Vue 3模板，可用于克隆以开始新的网站开发。使用了Vite + Vue 3组合API + TypeScript。
 
 ## 目录
@@ -69,7 +68,7 @@
 以下代码会在`build`的时候自动删除
 - `debugger`
 - `console.log`
-- `console.debug` 
+- `console.debug`
 
 ## 语言国际化
 
@@ -83,7 +82,7 @@
 ### 转换语言
 如果你想转换语言的话，请使用 `_changeLang(**目标语言代码**)`
 ```ts
-function _changeLang(targetLocale:string) {
+function _changeLang(targetLocale: string) {
   i18n.global.locale.value = targetLocale;
   localStorage.site_lang = targetLocale;
   document.documentElement.setAttribute("lang", targetLocale);

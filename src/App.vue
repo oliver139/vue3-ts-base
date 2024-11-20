@@ -1,3 +1,6 @@
+<script setup lang="ts">
+</script>
+
 <template>
   <header>
     <img
@@ -20,9 +23,6 @@
 
   <RouterView />
 </template>
-
-<script setup lang="ts">
-</script>
 
 <style scoped>
 header {

@@ -79,7 +79,7 @@ Eslint is set to be run before git commit with use of below:
 The below will be dropped upon production build:
 - `debugger`
 - `console.log`
-- `console.debug` 
+- `console.debug`
 
 ## Multi-language Support with Vue-i18n
 
@@ -93,7 +93,7 @@ The below will be dropped upon production build:
 ### Switch Language
 When you want to switch language, please use `_changeLang(targetLocale)`
 ```ts
-function _changeLang(targetLocale:string) {
+function _changeLang(targetLocale: string) {
   i18n.global.locale.value = targetLocale;
   localStorage.site_lang = targetLocale;
   document.documentElement.setAttribute("lang", targetLocale);

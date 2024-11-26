@@ -20,13 +20,18 @@ coverage
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-!.vscode/settings.json
 .idea
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+*.tsbuildinfo
+
+# unplugin d.ts
+auto-imports.d.ts
+components.d.ts
 
 # Cache
 .eslintcache

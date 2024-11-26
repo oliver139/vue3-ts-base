@@ -55,6 +55,7 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
     - `$t`, `$d`, `$n`, `$local`
     - `_changeLang`
   - VueUse (Functions in `@vueuse/core`)
+  - Pinia Store Modules
 * [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components), Allow to use components without importing
   - All components under `/src/components`
   - [VueUse](https://vueuse.org/) (Both components and directives)
@@ -63,12 +64,13 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
     - `@iconify/vue`
 
 ### CSS
-* [normalize.css](https://necolas.github.io/normalize.css/) (CSS Reset)
+* [Modern CSS Reset](https://piccalil.li/blog/a-more-modern-css-reset/) (CSS Reset)
 * [SCSS](https://sass-lang.com/)
 
 ### JavaScript / TypeScript
-* [ESLint](https://eslint.org/) with kind of strict rules, check out [`.eslintrc.cjs`](https://github.com/oliver139/vue3-ts-base/blob/main/.eslintrc.cjs)
-* [eslint-plugin-vuejs-accessibility](https://github.com/vue-a11y/eslint-plugin-vuejs-accessibility) (Provide hints on a11y things on the HTML code)
+* [ESLint](https://eslint.org/) with kind of strict rules, check out:
+  - The repository of the ESLint config: https://github.com/oliver139/eslint-config
+  - The eslint inspector of the config: https://oliver139.github.io/eslint-config/
 
 ### Git
 Eslint is set to be run before git commit with use of below:
@@ -109,7 +111,7 @@ With the help of vite's `import.meta.glob`, you just need to create new `<locale
 
 ## Project Setup
 
-PNPM with node 20.10.0 is used.
+PNPM with node 22.11.0 is used.
 
 ```sh
 pnpm install
@@ -130,5 +132,7 @@ pnpm build
 ### Lint with [ESLint](https://eslint.org/)
 
 ```sh
-pnpm lint
+pnpm lint          # Check and fix
+pnpm lint:check    # Check only
+pnpm lint:inspect  # Open the eslint config inspector
 ```

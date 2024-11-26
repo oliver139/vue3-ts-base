@@ -2,6 +2,7 @@
   "recommendations": [
     "Vue.volar",
     "dbaeumer.vscode-eslint",
+    "EditorConfig.EditorConfig",
     "antfu.goto-alias",
     "lokalise.i18n-ally"
   ]

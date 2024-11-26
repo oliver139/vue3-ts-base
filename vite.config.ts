@@ -1,14 +1,15 @@
 import { fileURLToPath, URL } from "node:url";
 
 import vue from "@vitejs/plugin-vue";
-import { defineConfig } from "vite";
 
-// Unplugin Tools
 import AutoImport from "unplugin-auto-import/vite";
 import { VueUseComponentsResolver, VueUseDirectiveResolver } from "unplugin-vue-components/resolvers";
 import Components from "unplugin-vue-components/vite";
 
-// https://vitejs.dev/config/
+import { defineConfig } from "vite";
+import vueDevTools from "vite-plugin-vue-devtools";
+
+// https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
   css: {
     preprocessorOptions: {
@@ -19,14 +20,26 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     vue(),
+    vueDevTools(),
     AutoImport({
       dts: true,
       imports: [
         "vue",
         "vue-router",
         "@vueuse/core",
+        "pinia",
+        { "@vueuse/core": ["promiseTimout"] },
         "vue-i18n",
+        { "@raffaelesgarro/vue-use-sound": ["useSound"] },
         { "@/i18n": ["$t", "$d", "$n", "$locale", "_changeLang"] },
+        {
+          from: "vue-router",
+          imports: ["RouteLocationRaw"],
+          type: true,
+        },
+      ],
+      dirs: [
+        "src/stores/**",
       ],
       vueTemplate: true,
     }),

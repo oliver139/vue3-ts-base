@@ -7,7 +7,7 @@ import i18n from "./i18n";
 import router from "./router";
 
 // #region : CSS
-import "normalize.css";
+import "@/assets/css/reset.css";
 import "@/assets/css/variable.scss";
 import "@/assets/css/transition.scss";
 import "@/assets/css/main.scss";
@@ -24,11 +24,11 @@ app.use(i18n);
 app.component("Icon", Icon);
 
 // Google Analytics
-app.use(pluginVueGtag, {
-  config: {
-    id: "###", // Change to yout Google Analytics ID
-  },
-}, router);
+// app.use(pluginVueGtag, {
+//   config: {
+//     id: "###", // Change to yout Google Analytics ID
+//   },
+// }, router);
 
 // Mount it
 app.mount("#app");

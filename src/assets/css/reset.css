@@ -43,6 +43,11 @@ h1, h2, h3, h4 {
   text-wrap: balance;
 }
 
+/* No top margin on 1st item */
+:is(h1, h2, h3, h4, p):first-child {
+  margin-block-start: 0;
+}
+
 /* A elements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;

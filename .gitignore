@@ -19,6 +19,7 @@ coverage
 
 # Editor directories and files
 .vscode/*
+!.vscode/settings.json
 !.vscode/extensions.json
 .idea
 *.suo
@@ -27,11 +28,15 @@ coverage
 *.sln
 *.sw?
 
+# TS Build
 *.tsbuildinfo
 
 # unplugin d.ts
 auto-imports.d.ts
 components.d.ts
+
+# vite error build log
+vite.config.ts.*
 
 # Cache
 .eslintcache

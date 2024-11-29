@@ -73,3 +73,7 @@ textarea:not([rows]) {
   scroll-margin-block: 5ex;
 }
 
+/* Default cursor when hovering <button> or <a> */
+button:hover, a:hover {
+  cursor: pointer;
+}

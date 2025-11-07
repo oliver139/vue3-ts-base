@@ -1,34 +1,43 @@
-import { Icon } from "@iconify/vue";
-import { createPinia } from "pinia";
-import { createApp } from "vue";
-import pluginVueGtag from "vue-gtag";
-import App from "./App.vue";
-import i18n from "./i18n";
-import router from "./router";
+import { createApp } from 'vue'
+import App from './App.vue'
+import i18n from './i18n'
+import router from './router'
+
+// #region : Pinia
+import { createPinia } from 'pinia'
+// #endregion
+
+// #region : Iconify
+import { Icon } from '@iconify/vue'
+import './utils/icon'
+// #endregion
+
+// #region : PrimeVue
+import PrimeVue from 'primevue/config'
+import DialogService from 'primevue/dialogservice'
+import ToastService from 'primevue/toastservice'
+import PrimeConfig from './config/prime'
+// #endregion
 
 // #region : CSS
-import "@/assets/css/reset.css";
-import "@/assets/css/variable.scss";
-import "@/assets/css/transition.scss";
-import "@/assets/css/main.scss";
+import '@/assets/css/tailwind.css'
+import '@/assets/css/variable.css'
+import '@/assets/css/transition.css'
 //  #endregion
 
-const app = createApp(App);
+const app = createApp(App)
 
 // Vue Plugins
-app.use(createPinia());
-app.use(router);
-app.use(i18n);
+app
+  .use(createPinia())
+  .use(router)
+  .use(i18n)
+  .use(PrimeVue, PrimeConfig)
+  .use(DialogService)
+  .use(ToastService)
 
 // Global Component
-app.component("Icon", Icon);
-
-// Google Analytics
-// app.use(pluginVueGtag, {
-//   config: {
-//     id: "###", // Change to yout Google Analytics ID
-//   },
-// }, router);
+app.component('Icon', Icon)
 
 // Mount it
-app.mount("#app");
+app.mount('#app')

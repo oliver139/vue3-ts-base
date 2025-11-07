@@ -1,45 +1,54 @@
-import { fileURLToPath, URL } from "node:url";
+import { fileURLToPath, URL } from 'node:url'
 
-import vue from "@vitejs/plugin-vue";
+import vue from '@vitejs/plugin-vue'
 
-import AutoImport from "unplugin-auto-import/vite";
-import { VueUseComponentsResolver, VueUseDirectiveResolver } from "unplugin-vue-components/resolvers";
-import Components from "unplugin-vue-components/vite";
+import AutoImport from 'unplugin-auto-import/vite'
+import { VueUseComponentsResolver, VueUseDirectiveResolver } from 'unplugin-vue-components/resolvers'
+import Components from 'unplugin-vue-components/vite'
 
-import { defineConfig } from "vite";
-import vueDevTools from "vite-plugin-vue-devtools";
+import { defineConfig } from 'vite'
+import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
-  css: {
-    preprocessorOptions: {
-      scss: {
-        api: "modern",
-      },
-    },
-  },
   plugins: [
-    vue(),
+    vue({
+      template: {
+        compilerOptions: {
+          // Suppress warning
+          isCustomElement: tag => ['search', 'output'].includes(tag),
+        },
+      },
+    }),
     vueDevTools(),
     AutoImport({
       dts: true,
       imports: [
-        "vue",
-        "vue-router",
-        "@vueuse/core",
-        "pinia",
-        { "@vueuse/core": ["promiseTimout"] },
-        "vue-i18n",
-        { "@raffaelesgarro/vue-use-sound": ["useSound"] },
-        { "@/i18n": ["$t", "$d", "$n", "$locale", "_changeLang"] },
+        'vue',
+        'vue-router',
+        '@vueuse/core',
+        { '@vueuse/core': ['promiseTimout'] },
+        'pinia',
+        'vue-i18n',
+        { '@/i18n': ['$t', '$d', '$n', '$locale', '_changeLang'] },
+        { 'primevue/usedialog': ['useDialog'] },
+        { 'primevue/usetoast': ['useToast'] },
         {
-          from: "vue-router",
-          imports: ["RouteLocationRaw"],
+          from: 'vue-router',
+          imports: ['RouteLocationRaw'],
           type: true,
         },
+        // { valibot: [['*', 'v']] },
+        // {
+        //   from: 'valibot',
+        //   imports: ['InferInput'],
+        //   type: true,
+        // },
       ],
       dirs: [
-        "src/stores/**",
+        'src/stores/**',
+        'src/utils/**',
+        'src/types/**',
       ],
       vueTemplate: true,
     }),
@@ -47,32 +56,34 @@ export default defineConfig(({ mode }) => ({
       dts: true,
       version: 3,
       dirs: [
-        "src/components",
-        "src/views",
+        'src/components',
+        'src/layouts',
+        'src/views',
       ],
       resolvers: [
         VueUseComponentsResolver(),
         VueUseDirectiveResolver(),
+        PrimeVueResolver(),
       ],
       types: [
         {
-          from: "vue-router",
-          names: ["RouterLink", "RouterView"],
+          from: 'vue-router',
+          names: ['RouterLink', 'RouterView'],
         },
         {
-          from: "@iconify/vue",
-          names: ["Icon"],
+          from: '@iconify/vue',
+          names: ['Icon'],
         },
       ],
     }),
   ],
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
   esbuild: {
-    drop: mode === "production" ? ["debugger"] : [],
-    pure: mode === "production" ? ["console.log", "console.debug"] : [],
+    drop: mode === 'production' ? ['debugger'] : [],
+    pure: mode === 'production' ? ['console.log', 'console.debug'] : [],
   },
-}));
+}))

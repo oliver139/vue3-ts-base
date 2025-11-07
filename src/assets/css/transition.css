@@ -1,0 +1,42 @@
+.fade-in-out {
+  &-enter-from, &-leave-to {
+    opacity: 0;
+    visibility: hidden;
+  }
+  &-enter-to, &-leave-from {
+    opacity: 1;
+    visibility: visible;
+  }
+  &-move, &-enter-active, &-leave-active {
+    transition: all var(--fade-time, .3s) ease var(--delay-time, 0s);
+  }
+}
+
+.fade-right {
+  &-enter-from, &-leave-to {
+      left: 100% !important;
+      opacity: 0;
+      visibility: hidden;
+  }
+  &-enter-active, &-leave-active {
+    transition: all var(--fade-time, .3s) ease var(--delay-time, 0s);
+  }
+}
+
+.fade-left {
+  &-enter-from, &-leave-to {
+      left: -100% !important;
+      opacity: 0;
+      visibility: hidden;
+  }
+  &-enter-active, &-leave-active {
+    transition: all var(--fade-time, .3s) ease var(--delay-time, 0s);
+  }
+}
+
+@keyframes iconRotate {
+  100% { transform: rotate(360deg); }
+}
+.icon-spinning {
+  animation: iconRotate 1.25s linear infinite;
+}

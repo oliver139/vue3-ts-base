@@ -4,6 +4,7 @@
     "dbaeumer.vscode-eslint",
     "EditorConfig.EditorConfig",
     "antfu.goto-alias",
-    "lokalise.i18n-ally"
+    "lokalise.i18n-ally",
+    "bradlc.vscode-tailwindcss"
   ]
 }

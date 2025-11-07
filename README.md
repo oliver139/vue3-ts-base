@@ -1,14 +1,15 @@
 # vue-ts-base
 
-[![en](https://img.shields.io/badge/lang-en-e83f6f.svg)](https://github.com/oliver139/vue3-ts-base/blob/main/README.md)
+<!-- [![en](https://img.shields.io/badge/lang-en-e83f6f.svg)](https://github.com/oliver139/vue3-ts-base/blob/main/README.md)
 [![zh-hant](https://img.shields.io/badge/lang-繁體中文-2274a5.svg)](https://github.com/oliver139/vue3-ts-base/blob/main/README.zh-hant.md)
-[![zh-hans](https://img.shields.io/badge/lang-簡体中文-32936f.svg)](https://github.com/oliver139/vue3-ts-base/blob/main/README.zh-hans.md)
+[![zh-hans](https://img.shields.io/badge/lang-簡体中文-32936f.svg)](https://github.com/oliver139/vue3-ts-base/blob/main/README.zh-hans.md) -->
 <!-- [![ja](https://img.shields.io/badge/lang-日本語-ffbf00.svg)](https://github.com/oliver139/vue3-ts-base/blob/main/README.ja.md) -->
 
 A Vue 3 base with common useful libraries setup for cloning to start a new website development. Vite + Vue 3 composition API + TypeScript are used.
 
 ## Table of Contents
 * [Setup](#setup)
+* [Tech Stack](#tech-stack)
 * [Feature included](#feature-included)
   - [Vue](#vue)
   - [Unplugin](#unplugin)
@@ -18,7 +19,14 @@ A Vue 3 base with common useful libraries setup for cloning to start a new websi
   - [Vite](#vite)
 * [Multi-language Support with Vue-i18n](#multi-language-support-with-vue-i18n)
   - [Switch Language](#switch-language)
+  - [Add More Language](#add-more-language)
 * [Project Setup](#project-setup)
+
+## Tech Stack
+* [Vue with TypeScript](https://vuejs.org)
+* [Tailwind CSS v3](https://v3.tailwindcss.com/docs/guides/vite#vue)
+* [Iconify](https://icon-sets.iconify.design/)
+* [Vite](https://vite.dev/guide/)
 
 ## Setup
 ### Recommended IDE Setup
@@ -64,13 +72,12 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
     - `@iconify/vue`
 
 ### CSS
-* [Modern CSS Reset](https://piccalil.li/blog/a-more-modern-css-reset/) (CSS Reset)
-* [SCSS](https://sass-lang.com/)
+* [Tailwind CSS v3](https://v3.tailwindcss.com/docs/guides/vite#vue)
 
 ### JavaScript / TypeScript
 * [ESLint](https://eslint.org/) with kind of strict rules, check out:
-  - The repository of the ESLint config: https://github.com/oliver139/eslint-config
-  - The eslint inspector of the config: https://oliver139.github.io/eslint-config/
+  - The repository of the ESLint config: https://github.com/oliver139/eslint-config-2
+  - The eslint inspector of the config: `pnpm lint:inspect` or https://oliver139.github.io/eslint-config-2/
 
 ### Git
 Eslint is set to be run before git commit with use of below:
@@ -90,15 +97,15 @@ The below will be dropped upon production build:
 - [$t](https://vue-i18n.intlify.dev/guide/advanced/composition.html#message-translation)
 - [$d](https://vue-i18n.intlify.dev/guide/advanced/composition.html#datetime-formatting)
 - [$n](https://vue-i18n.intlify.dev/guide/advanced/composition.html#number-formatting)
-- `_changeLang`
+- `changeSiteLang`
 
 ### Switch Language
 When you want to switch language, please use `_changeLang(targetLocale)`
 ```ts
 function _changeLang(targetLocale: string) {
-  i18n.global.locale.value = targetLocale;
-  localStorage.site_lang = targetLocale;
-  document.documentElement.setAttribute("lang", targetLocale);
+  i18n.global.locale.value = targetLocale
+  localStorage.site_lang = targetLocale
+  document.documentElement.setAttribute('lang', targetLocale)
 }
 ```
 This function helps change:

@@ -1,5 +1,5 @@
 <template>
-  VueJS
+  <div>VueJS</div>
 </template>
 
 <script setup lang="ts">

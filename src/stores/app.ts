@@ -1,8 +1,15 @@
-import { defineStore } from "pinia";
-import { ref } from "vue";
+export const useAppStore = defineStore('app', () => {
+  // #region : Loading
+  const loadingCount = ref(0)
+  const isLoading = computed((): boolean => loadingCount.value > 0)
+  function setLoading(status: boolean = true, debugMsg?: string) {
+    loadingCount.value = status ? loadingCount.value + 1 : Math.max(0, loadingCount.value - 1)
+  }
+  // #endregion
 
-export const useAppStore = defineStore("app", () => {
-  const isLoading = ref(false);
-
-  return { isLoading };
-});
+  return {
+    loadingCount,
+    isLoading,
+    setLoading,
+  }
+})

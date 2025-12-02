@@ -3,7 +3,7 @@
   "type": "module",
   "version": "3.0.1",
   "private": true,
-  "packageManager": "pnpm@10.20.0",
+  "packageManager": "pnpm@10.24.0",
   "description": "A nice template for starting a vue-ts project",
   "author": "Oliver Mak",
   "license": "MIT",

@@ -28,10 +28,10 @@ export default defineConfig(({ mode }) => ({
         'vue',
         'vue-router',
         '@vueuse/core',
-        { '@vueuse/core': ['promiseTimout'] },
+        { '@vueuse/core': ['promiseTimeout'] },
         'pinia',
         'vue-i18n',
-        { '@/i18n': ['$t', '$d', '$n', '$locale', '_changeLang'] },
+        { '@/i18n': ['$t', '$te', '$tm', '$d', '$n', '$locale', 'changeSiteLang'] },
         { 'primevue/usedialog': ['useDialog'] },
         { 'primevue/usetoast': ['useToast'] },
         {
@@ -65,6 +65,10 @@ export default defineConfig(({ mode }) => ({
         VueUseComponentsResolver(),
         VueUseDirectiveResolver(),
         PrimeVueResolver(),
+        // PrimeVueResolver({
+        //   directives: { prefix: 'P' },
+        // }),
+        // FloatingVueResolver(),
       ],
       types: [
         {
@@ -74,6 +78,10 @@ export default defineConfig(({ mode }) => ({
         {
           from: '@iconify/vue',
           names: ['Icon'],
+        },
+        {
+          from: '@primevue/forms',
+          names: ['Form'],
         },
       ],
     }),
@@ -86,5 +94,20 @@ export default defineConfig(({ mode }) => ({
   esbuild: {
     drop: mode === 'production' ? ['debugger'] : [],
     pure: mode === 'production' ? ['console.log', 'console.debug'] : [],
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: (id) => {
+          if (!id.includes('node_modules')) return
+          if (id.includes('primevue') || id.includes('primeuix')) return 'primevue'
+          if (id.includes('vue') || id.includes('vue-router') || id.includes('pinia') || id.includes('vue-i18n')) return 'vendor-vue'
+          return 'vendor'
+        },
+      },
+      // external: [
+      //   // Things to exclude from the bundle
+      // ],
+    },
   },
 }))

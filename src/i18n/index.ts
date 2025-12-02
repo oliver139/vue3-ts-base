@@ -52,6 +52,7 @@ changeSiteLang(site_lang)
 // @ts-expect-error Unknown TS error
 export const $t: typeof i18n.global.t = i18n.global.t
 export const $te: typeof i18n.global.te = i18n.global.te
+export const $tm: typeof i18n.global.tm = i18n.global.tm
 export const $d: typeof i18n.global.d = i18n.global.d
 export const $n: typeof i18n.global.n = i18n.global.n
 export const $locale: typeof i18n.global.locale = i18n.global.locale

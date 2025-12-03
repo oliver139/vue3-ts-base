@@ -20,7 +20,7 @@
     "prepare": "simple-git-hooks && nr build-unplugin",
     "build": "run-p \"build-only {@}\" type-check --",
     "build-only": "vite build",
-    "build-unplugin": "nr build-only && rimraf ./dist",
+    "build:unplugin": "nr build-only && rimraf ./dist && rimraf ./dist/nswl-naxos-web",
     "preview": "vite preview",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --cache --fix",

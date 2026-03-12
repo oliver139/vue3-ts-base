@@ -1,1 +1,5 @@
-useNodeVersion: 22.21.1
+shellEmulator: true
+
+trustPolicy: no-downgrade
+
+useNodeVersion: 24.13.1

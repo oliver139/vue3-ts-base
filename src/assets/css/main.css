@@ -1,0 +1,63 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@import "./tw-module/box.css";
+@import "./tw-module/layout.css";
+@import "./tw-module/position.css";
+@import "./tw-module/variant.css";
+
+@theme {
+  /* Colors */
+  --color-white: var(--color-zinc-200);
+  --color-black: var(--color-zinc-800);
+
+  /* Fonts */
+  --font-sans: "Metropolis", sans-serif;
+  --font-serif: "Newsreader", serif;
+  --font-mono: "Fira Code", monospace;
+
+  /* Screens / Breakpoints */
+  --breakpoint-sssm: 480px;
+  --breakpoint-ssm: 576px;
+
+  /* Transition Defaults */
+  --default-transition-duration: 300ms;
+  --default-transition-timing-function: ease;
+
+  /* Custom Transition Properties */
+  --transition-property-font: color, font-size, font-weight, text-align;
+  --transition-property-opacity: opacity, visibility;
+  --transition-property-hidden-rows: opacity, visibility, grid-template-rows;
+}
+
+@layer base {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+  ::view-transition-old(root) {
+    @apply z-1
+  }
+  ::view-transition-new(root) {
+    @apply z-9999
+  }
+  .dark::view-transition-old(root) {
+    @apply z-9999
+  }
+  .dark::view-transition-new(root) {
+    @apply z-1
+  }
+  
+  /* .dark {
+    --ui-bg: var(--color-zinc-950);
+    --ui-primary: var(--color-primary-100);
+  } */
+}
+
+  :root {
+    --ui-primary: light-dark(var(--color-primary-800), var(--color-primary-200));
+    --ui-text: light-dark(var(--color-neutral-800), var(--color-neutral-200));
+    --ui-header-height: auto;
+    font-size: 32px;
+  }

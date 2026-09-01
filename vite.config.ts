@@ -1,10 +1,9 @@
 import { fileURLToPath, URL } from 'node:url'
 
-import { PrimeVueResolver } from '@primevue/auto-import-resolver'
 import { VueUseComponentsResolver, VueUseDirectiveResolver } from 'unplugin-vue-components/resolvers'
 
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
+import nuxtUi from '@nuxt/ui/vite'
+import tailwindcss from '@tailwindcss/vite'
 
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
@@ -21,70 +20,62 @@ export default defineConfig(({ mode }) => ({
         },
       },
     }),
-    vueDevTools(),
-    AutoImport({
-      dts: true,
-      imports: [
-        'vue',
-        'vue-router',
-        '@vueuse/core',
-        { '@vueuse/core': ['promiseTimeout'] },
-        'pinia',
-        'vue-i18n',
-        { '@/i18n': ['$t', '$te', '$tm', '$d', '$n', '$locale', 'changeSiteLang'] },
-        { 'primevue/usedialog': ['useDialog'] },
-        { 'primevue/usetoast': ['useToast'] },
-        {
-          from: 'vue-router',
-          imports: ['RouteLocationRaw'],
-          type: true,
-        },
+    tailwindcss(),
+    nuxtUi({
+      autoImport: {
+        dts: true,
+        imports: [
+          'vue',
+          'vue-router',
+          '@vueuse/core',
+          { '@vueuse/core': ['promiseTimeout'] },
+          { '@vueuse/router': ['useRouteHash', 'useRouteParams', 'useRouteQuery'] },
+          'pinia',
+          'vue-i18n',
+          { '@/i18n': ['$t', '$te', '$tm', '$d', '$n', '$locale', 'changeSiteLang'] },
+          {
+            from: 'vue-router',
+            imports: ['RouteLocationRaw'],
+            type: true,
+          },
         // { valibot: [['*', 'v']] },
         // {
         //   from: 'valibot',
         //   imports: ['InferInput'],
         //   type: true,
         // },
-      ],
-      dirs: [
-        'src/stores/**',
-        'src/utils/**',
-        'src/types/**',
-      ],
-      vueTemplate: true,
+        ],
+        dirs: [
+          'src/stores/**',
+          'src/utils/**',
+          'src/types/**',
+        ],
+        vueTemplate: true,
+      },
+      components: {
+        dts: true,
+        dirs: [
+          'src/components',
+          'src/layouts',
+          'src/views',
+        ],
+        resolvers: [
+          VueUseComponentsResolver(),
+          VueUseDirectiveResolver(),
+        ],
+        types: [
+          {
+            from: 'vue-router',
+            names: ['RouterLink', 'RouterView'],
+          },
+          {
+            from: '@iconify/vue',
+            names: ['Icon'],
+          },
+        ],
+      },
     }),
-    Components({
-      dts: true,
-      version: 3,
-      dirs: [
-        'src/components',
-        'src/layouts',
-        'src/views',
-      ],
-      resolvers: [
-        VueUseComponentsResolver(),
-        VueUseDirectiveResolver(),
-        PrimeVueResolver(),
-        // PrimeVueResolver({
-        //   directives: { prefix: 'P' },
-        // }),
-        // FloatingVueResolver(),
-      ],
-      types: [
-        {
-          from: 'vue-router',
-          names: ['RouterLink', 'RouterView'],
-        },
-        {
-          from: '@iconify/vue',
-          names: ['Icon'],
-        },
-        {
-          from: '@primevue/forms',
-          names: ['Form'],
-        },
-      ],
-    }),
+    vueDevTools(),
   ],
   resolve: {
     alias: {
@@ -100,7 +91,6 @@ export default defineConfig(({ mode }) => ({
       output: {
         manualChunks: (id) => {
           if (!id.includes('node_modules')) return
-          if (id.includes('primevue') || id.includes('primeuix')) return 'primevue'
           if (id.includes('vue') || id.includes('vue-router') || id.includes('pinia') || id.includes('vue-i18n')) return 'vendor-vue'
           return 'vendor'
         },

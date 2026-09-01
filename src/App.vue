@@ -1,5 +1,7 @@
 <template>
-  <div>VueJS</div>
+  <UApp>
+    <RouterView />
+  </UApp>
 </template>
 
 <script setup lang="ts">

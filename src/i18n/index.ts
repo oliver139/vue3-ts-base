@@ -1,5 +1,5 @@
-import { createI18n } from 'vue-i18n'
 import type { typeAvailableLangs } from '@/types/app'
+import { createI18n } from 'vue-i18n'
 
 const langs = import.meta.glob('./*.json', { eager: true, import: 'default' })
 const messages = Object.entries(langs).reduce((msgs, [key, value]) => {

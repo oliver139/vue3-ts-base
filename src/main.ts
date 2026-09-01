@@ -12,18 +12,13 @@ import { Icon } from '@iconify/vue'
 import './utils/icon'
 // #endregion
 
-// #region : PrimeVue
-import PrimeVue from 'primevue/config'
-import DialogService from 'primevue/dialogservice'
-import ToastService from 'primevue/toastservice'
-import PrimeConfig from './config/prime'
-// #endregion
-
-// #region : CSS
-import '@/assets/css/tailwind.css'
-import '@/assets/css/variable.css'
-import '@/assets/css/transition.css'
+// #region : Tailwind CSS
+import '@/assets/css/main.css'
 //  #endregion
+
+// #region : Nuxt UI
+import NuxtUi from '@nuxt/ui/vue-plugin'
+// #endregion
 
 const app = createApp(App)
 
@@ -31,10 +26,8 @@ const app = createApp(App)
 app
   .use(createPinia())
   .use(router)
+  .use(NuxtUi)
   .use(i18n)
-  .use(PrimeVue, PrimeConfig)
-  .use(DialogService)
-  .use(ToastService)
 
 // Global Component
 app.component('Icon', Icon)

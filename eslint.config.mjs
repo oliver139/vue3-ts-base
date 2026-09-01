@@ -1,14 +1,8 @@
-import eslintConfig from '@oliver139/eslint-config'
-import tailwind from 'eslint-plugin-tailwindcss'
+import antfu from '@antfu/eslint-config'
+import oli from '@oliver139/eslint-config'
 
-export default eslintConfig(
-  { vue: true },
-  ...tailwind.configs['flat/recommended'],
-).append(
-  {
-    name: 'tailwindcss:overrides',
-    rules: {
-      'tailwindcss/no-custom-classname': 'off',
-    },
+export default antfu(...oli({
+  tailwind: {
+    entryPoint: './app/assets/css/main.css',
   },
-)
+}))

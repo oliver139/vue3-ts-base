@@ -3,7 +3,7 @@
   "type": "module",
   "version": "4.0.0",
   "private": true,
-  "packageManager": "pnpm@10.32.1",
+  "packageManager": "pnpm@11.25.0",
   "description": "A nice template for starting a VueTS project",
   "author": "Oliver Mak",
   "license": "MIT",
@@ -13,13 +13,30 @@
     "url": "github:oliver139/vue3-ts-base"
   },
   "engines": {
-    "node": ">=24"
+    "node": "^24.18.1",
+    "runtime": {
+      "name": "node",
+      "version": "^24.18.1",
+      "onFail": "download"
+    }
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "^24.18.1",
+      "onFail": "download"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": "11.25.0",
+      "onFail": "download"
+    }
   },
   "scripts": {
     "predev": "rimraf auto-imports.d.ts components.d.ts",
     "dev": "vite",
     "prepare": "simple-git-hooks",
-    "build": "run-p \"build-only {@}\" type-check --",
+    "build": "run-s build-only type-check",
     "build-only": "vite build",
     "preview": "vite preview",
     "type-check": "vue-tsc --build --force",
@@ -32,41 +49,41 @@
     "ncu": "nlx npm-check-updates"
   },
   "dependencies": {
-    "@primeuix/themes": "^2.0.3",
-    "@vueuse/core": "^14.2.1",
-    "pinia": "^3.0.4",
-    "primevue": "^4.5.4",
-    "tailwindcss-primeui": "^0.6.1",
-    "vue": "^3.5.30",
-    "vue-i18n": "^11.3.0",
-    "vue-router": "^5.0.3"
+    "@nuxt/ui": "^4.11.0",
+    "@vueuse/core": "^14.4.0",
+    "@vueuse/router": "^14.4.0",
+    "pinia": "^4.0.3",
+    "vue": "^3.5.41",
+    "vue-i18n": "^11.4.9",
+    "vue-router": "^5.2.0"
   },
   "devDependencies": {
-    "@antfu/ni": "^28.3.0",
-    "@iconify/vue": "^5.0.0",
-    "@oliver139/eslint-config": "^5.1.0",
-    "@primevue/auto-import-resolver": "^4.5.4",
-    "@tsconfig/node24": "^24.0.4",
+    "@antfu/eslint-config": "^9.3.0",
+    "@antfu/ni": "^30.5.0",
+    "@iconify/vue": "^5.0.1",
+    "@oliver139/eslint-config": "^7.7.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@tsconfig/node24": "^24.0.5",
     "@types/eslint-plugin-tailwindcss": "^3.17.0",
-    "@types/node": "^25.4.0",
-    "@vitejs/plugin-vue": "^6.0.4",
-    "@vue/tsconfig": "^0.9.0",
-    "autoprefixer": "^10.4.27",
-    "eslint": "^10.0.3",
-    "eslint-plugin-tailwindcss": "^3.18.2",
-    "lint-staged": "^16.3.3",
-    "npm-run-all2": "^8.0.4",
-    "postcss": "^8.5.8",
+    "@types/node": "^25.9.5",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "@vue/tsconfig": "^0.9.1",
+    "autoprefixer": "^10.5.4",
+    "eslint": "^10.9.1",
+    "eslint-plugin-better-tailwindcss": "~4.6.0",
+    "lint-staged": "^17.3.0",
+    "npm-run-all2": "^9.0.3",
+    "postcss": "^8.5.26",
     "postcss-hexrgba": "^2.1.0",
     "rimraf": "^6.1.3",
     "simple-git-hooks": "^2.13.1",
-    "tailwindcss": "^3.4.17",
-    "typescript": "~5.9.3",
-    "unplugin-auto-import": "^21.0.0",
-    "unplugin-vue-components": "^31.0.0",
-    "vite": "^7.3.1",
-    "vite-plugin-vue-devtools": "^8.0.7",
-    "vue-tsc": "^3.2.5"
+    "tailwindcss": "^4.3.3",
+    "typescript": "^6.0.3",
+    "unplugin-auto-import": "^21.1.0",
+    "unplugin-vue-components": "^32.1.0",
+    "vite": "^8.2.2",
+    "vite-plugin-vue-devtools": "^8.2.1",
+    "vue-tsc": "^3.3.11"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
